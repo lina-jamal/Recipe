@@ -9,9 +9,9 @@ const SearchBar = () => {
 };
 const styles = StyleSheet.create({
   container: {
+    marginVertical: 15,
     width: "90%",
     height: 50,
-    // marginLeft: 20,
     backgroundColor: "white",
     borderRadius: 8,
   },

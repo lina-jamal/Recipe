@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StatusBar, StyleSheet, SafeAreaView } from "react-native";
+import { Platform, StatusBar, StyleSheet, SafeAreaView } from "react-native";
+// import background from "../../assets/background.jpg";
 const Screen = ({ children }) => {
   return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
 };
