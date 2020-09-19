@@ -3,16 +3,14 @@ import { View, Image, StyleSheet } from "react-native";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
 
-const BlockCard = ({ style }) => {
+const BlockCard = ({ style, imageStyle, item }) => {
+  const { image, title, deitLabel } = item;
   return (
     <View style={[styles.container, style]}>
-      <Image
-        style={styles.image}
-        source={require("../../assets/background.jpg")}
-      />
+      <Image style={[styles.image, imageStyle]} source={{ uri: image }} />
       <View style={styles.contentContainer}>
-        <Title>Recipe</Title>
-        <SubTitle> My Recipe</SubTitle>
+        <Title>{title}</Title>
+        <SubTitle> {deitLabel}</SubTitle>
       </View>
     </View>
   );

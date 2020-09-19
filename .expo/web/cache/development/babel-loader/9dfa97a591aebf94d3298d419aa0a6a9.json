@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["// import React from \"react\";\n// import BlockCard from \"./BlockCard\";\n// const FeaturedNews = ({}) => {\n//   return <BlockCard style={{ marginVertical: 15 }} />;\n// };\n\n// export default FeaturedNews;\n"]},"metadata":{},"sourceType":"script"}

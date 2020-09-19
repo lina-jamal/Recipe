@@ -10,10 +10,14 @@ const SearchBar = () => {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
+    marginHorizontal: 20,
+    margin: "auto",
     width: "90%",
     height: 50,
     backgroundColor: "white",
     borderRadius: 8,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   searchInput: {
     width: "100%",
