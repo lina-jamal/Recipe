@@ -1,8 +1,8 @@
 import React from "react";
-import HorizotalList from "./HorizotalList";
+import VerticaList from "./VerticaList";
 
 const MeatRecipe = ({ data }) => {
-  return <HorizotalList title="MeatRecipe" data={data} />;
+  return <VerticaList title="MeatRecipe" data={data} />;
 };
 
 export default MeatRecipe;
