@@ -1,43 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
-const axios = require("axios");
+import React from "react";
+import { Text } from "react-native";
+import useResipe from "./app/hooks/useResipe";
 
 import Screen from "./app/components/Screen";
 import SearchBar from "./app/components/SearchBar";
 import FeaturedResipe from "./app/components/FeaturedResipe";
-import SmallCard from "./app/components/smallCard";
 import ChickenRecipe from "./app/components/ChickenRecipe";
 import MeatRecipe from "./app/components/meatRecipe";
 export default function App() {
-  const [chikenData, setChikenData] = useState([]);
-  const [meatData, setMeatData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    fetchData("chiken", setChikenData);
-    fetchData("meat", setMeatData);
-  }, []);
-  const fetchData = (type, set) => {
-    axios
-      .get(
-        `https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&from=0&to=10&&q=${type}`
-      )
-      .then(({ data: { hits } }) => {
-        return hits.map(({ recipe }) => ({
-          id: recipe.uri,
-          image: recipe.image,
-          title: recipe.label,
-          deitLabel: recipe.dietLabels,
-          mealType: recipe.mealType,
-          ingredientLines: recipe.ingredientLines,
-          // digest: recipe.digest,
-        }));
-      })
-      .then((recipe) => {
-        setLoading(false);
-        set(recipe);
-      })
-      .catch((error) => console.log("failed get data", { error }));
-  };
+  const [loading, chikenData, meatData] = useResipe();
   return (
     <Screen>
       <SearchBar />
