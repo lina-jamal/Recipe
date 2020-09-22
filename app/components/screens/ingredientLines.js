@@ -14,7 +14,7 @@ const IngredientLines = () => {
     <ScrollView style={styles.container}>
       <Image
         style={styles.image}
-        source={require("../../assets/splash.png")}
+        source={require("../../../assets/splash.png")}
       ></Image>
       <View style={styles.contentContainer}>
         <Text style={styles.title}> This is the ingredient ..</Text>
