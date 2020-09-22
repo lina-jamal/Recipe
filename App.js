@@ -2,11 +2,12 @@ import React from "react";
 import { Text } from "react-native";
 import useResipe from "./app/hooks/useResipe";
 
-import Screen from "./app/components/Screen";
+import Screen from "./app/components/common/Screen";
 import SearchBar from "./app/components/SearchBar";
 import FeaturedResipe from "./app/components/FeaturedResipe";
 import ChickenRecipe from "./app/components/ChickenRecipe";
 import MeatRecipe from "./app/components/meatRecipe";
+// import ResipeList from "./app/components/list/ResipeList";
 export default function App() {
   const [loading, chikenData, meatData] = useResipe();
   return (

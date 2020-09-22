@@ -1,5 +1,5 @@
 import React from "react";
-import VerticaList from "./VerticaList";
+import VerticaList from "./list/VerticaList";
 
 const MeatRecipe = ({ data }) => {
   return <VerticaList title="MeatRecipe" data={data} />;

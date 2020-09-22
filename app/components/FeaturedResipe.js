@@ -1,5 +1,5 @@
 import React from "react";
-import BlockCard from "./BlockCard";
+import BlockCard from "./card/BlockCard";
 const FeaturedResipe = ({ item }) => {
   return (
     <BlockCard

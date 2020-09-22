@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import Title from "./Title";
-import SubTitle from "./SubTitle";
+import Title from "../common/Title";
+import SubTitle from "../common/SubTitle";
 
-const BlockCard = ({ style, imageStyle, item }) => {
+const FlatCard = ({ item }) => {
   const { image, title, deitLabel } = item;
   return (
-    <View style={[styles.container, style]}>
-      <Image style={[styles.image, imageStyle]} source={{ uri: image }} />
+    <View style={styles.container}>
+      <Image style={styles.image} source={{ uri: image }} />
       <View style={styles.contentContainer}>
         <Title>{title}</Title>
         <SubTitle> {deitLabel}</SubTitle>
@@ -17,19 +17,21 @@ const BlockCard = ({ style, imageStyle, item }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    height: 300,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "white",
     borderRadius: 8,
     overflow: "hidden",
-    backgroundColor: "#fff",
-    // justifyContent: "center",
+    marginBottom: 10,
+    height: 80,
   },
   image: {
-    width: "100%",
-    height: 200,
+    flex: 0.35,
+    height: "100%",
   },
   contentContainer: {
-    padding: 5,
+    flex: 0.65,
+    paddingHorizontal: 5,
   },
 });
-export default BlockCard;
+export default FlatCard;

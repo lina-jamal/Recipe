@@ -1,5 +1,5 @@
 import React from "react";
-import HorizotalList from "./HorizotalList";
+import HorizotalList from "./list/HorizotalList";
 
 const ChickenRecipe = ({ data }) => {
   return <HorizotalList title="CheckenRecipe" data={data} />;
