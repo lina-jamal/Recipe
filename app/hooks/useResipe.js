@@ -8,7 +8,6 @@ const useResipe = () => {
     chicken: [],
     meat: [],
   });
-  console.log(allData, 66);
   useEffect(() => {
     fetchData();
   }, []);
@@ -40,6 +39,7 @@ const useResipe = () => {
       .then((resipee) => {
         // setLoading(false);
         setAllData({ chicken: resipee[0], meat: resipee[1] });
+        setLoading(false);
       })
 
       .catch((error) => console.log("failed get data", { error }));

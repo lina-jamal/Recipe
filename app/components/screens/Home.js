@@ -9,7 +9,6 @@ import useResipe from "../../hooks/useResipe";
 
 const Home = () => {
   const [loading, allData] = useResipe();
-  console.log(allData, 999);
   return (
     <Screen>
       <SearchBar />
