@@ -8,7 +8,8 @@ import MeatRecipe from "../meatRecipe";
 import useResipe from "../../hooks/useResipe";
 
 const Home = () => {
-  const [loading, chikenData, meatData] = useResipe();
+  const [loading, allData] = useResipe();
+  console.log(allData, 999);
   return (
     <Screen>
       <SearchBar />
@@ -22,8 +23,16 @@ const Home = () => {
         }}
       />
       {/* <SmallCard /> */}
-      {loading ? <Text>Loding</Text> : <ChickenRecipe data={chikenData} />}
-      {loading ? <Text>Loding</Text> : <MeatRecipe data={meatData} />}
+      {loading ? (
+        <Text>Loding</Text>
+      ) : (
+        <ChickenRecipe data={allData.chicken.resipe} />
+      )}
+      {loading ? (
+        <Text>Loding</Text>
+      ) : (
+        <MeatRecipe data={allData.meat.resipe} />
+      )}
     </Screen>
   );
 };
