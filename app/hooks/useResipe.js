@@ -8,6 +8,7 @@ const useResipe = () => {
     chicken: [],
     meat: [],
     desert: [],
+    salad: [],
   });
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -24,7 +25,10 @@ const useResipe = () => {
     const desertRequest = axios.get(
       "https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&from=0&to=10&&q='desert'"
     );
-    Promise.all([chikenRequest, meatRequest, desertRequest])
+    const saladRequest = axios.get(
+      "https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&from=0&to=10&&q='salad'"
+    );
+    Promise.all([chikenRequest, meatRequest, desertRequest, saladRequest])
       .then((result) => {
         return result.map(({ data }) => {
           const { hits, q } = data;
@@ -47,11 +51,12 @@ const useResipe = () => {
           chicken: resipee[0],
           meat: resipee[1],
           desert: resipee[2],
+          salad: resipee[3],
         });
         setLoading(false);
         return resipee;
       })
-      .then((rr) => setData(rr[0].concat(rr[1].concat(rr[2]))))
+      .then((rr) => setData(rr[0].concat(rr[1].concat(rr[2].concat(rr[3])))))
 
       .catch((error) => console.log("failed get data", { error }));
   };
