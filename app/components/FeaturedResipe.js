@@ -5,7 +5,7 @@ const FeaturedResipe = ({ item }) => {
   const navigation = useNavigation();
   return (
     <BlockCard
-      onPress={() => navigation.navigate("IngredientLines", { item })}
+      onPress={() => navigation.navigate("ResipeDetail", { item })}
       item={item}
       style={{ marginVertical: 15, marginHorizontal: 20 }}
     />

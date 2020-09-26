@@ -9,16 +9,16 @@ import {
   FlatList,
 } from "react-native";
 import useResipe from "../../hooks/useResipe";
+import HorizotalList from "../list/HorizotalList";
 const { width, height } = Dimensions.get("window");
 
-const IngredientLines = ({ route }) => {
+const ResipeDetail = ({ route }) => {
   const { data } = useResipe();
   const [resipe, setResipe] = useState();
-  // const [related, setRelated] = useState();
+  const [related, setRelated] = useState();
 
   const [loading, setLoading] = useState(true);
-
-  // const { id: postId, category: resipeCaegory } = route.params.item;
+  const { id: resipeId, category: resipeCaegory } = route.params.item;
 
   const getSingle = async (id) => {
     await data;
@@ -29,14 +29,21 @@ const IngredientLines = ({ route }) => {
     }
   };
 
+  const fetchRelatedResipe = async (category) => {
+    await data;
+    if (data.length !== 0) {
+      setLoading(false);
+      const result = data.filter((resipe) => resipe.category === category);
+      setRelated(result.filter((item) => item.id !== resipeId));
+      return data;
+    }
+  };
+
   useEffect(() => {
-    getSingle(
-      "http://www.edamam.com/ontologies/edamam.owl#recipe_42a70bb03028b99e51156b64c4f182b0"
-    );
-    fetchRelatedResipe("'chiken'");
+    getSingle(resipeId);
+    fetchRelatedResipe(resipeCaegory);
   }, [data.length === 0]);
 
-  // const title= resipe;
   return (
     <ScrollView style={styles.container}>
       {resipe ? (
@@ -46,13 +53,9 @@ const IngredientLines = ({ route }) => {
           <Image style={styles.image} source={{ uri: resipe[0].image }}></Image>
           <View style={styles.contentContainer}>
             <Text style={styles.title}> {resipe[0].title} ..</Text>
-            {/* <Text style={styles.content}> */}
-            {/* {resipe[0].ingredientLines.map((e) => (
-                <SectionList>{e}</SectionList>
-              ))} */}
-            <Text style={styles.content}>ingredientLines...</Text>
-
             <View style={styles.ListContent}>
+              <Text style={styles.content}>ingredientLines...</Text>
+
               <FlatList
                 data={resipe[0].ingredientLines}
                 keyExtractor={(item, index) => item + index}
@@ -62,6 +65,13 @@ const IngredientLines = ({ route }) => {
               />
             </View>
           </View>
+          {related ? (
+            <View style={styles.RelatedContaner}>
+              <HorizotalList title="Related Resepi.." data={related} />
+            </View>
+          ) : (
+            <Text>loading ...</Text>
+          )}
         </View>
       ) : (
         <Text>loading ...</Text>
@@ -79,25 +89,28 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     marginBottom: 10,
   },
   content: {
-    fontSize: 16,
+    fontSize: 23,
     color: "#4e4d4d",
+    fontWeight: "bold",
+    padding: 16,
   },
   list: {
-    // marginVertical: 16,
     padding: 10,
     fontSize: 18,
     height: 44,
-    // flexDirection: "column",
   },
   ListContent: {
     flex: 1,
     paddingTop: 22,
   },
+  RelatedContaner: {
+    padding: 10,
+  },
 });
 
-export default IngredientLines;
+export default ResipeDetail;
