@@ -8,13 +8,14 @@ import MeatRecipe from "../meatRecipe";
 import useResipe from "../../hooks/useResipe";
 
 const Home = () => {
-  const [loading, allData] = useResipe();
+  const { loading, allData } = useResipe();
   return (
     <Screen>
       <SearchBar />
       <FeaturedResipe
         item={{
           id: "hhhjkkll;;",
+          category: "chiken",
           // title: "Creamy Lemon Parmesan Chicken",
           // dietLabels: "low",
           image:
@@ -22,16 +23,8 @@ const Home = () => {
         }}
       />
       {/* <SmallCard /> */}
-      {loading ? (
-        <Text>Loding</Text>
-      ) : (
-        <ChickenRecipe data={allData.chicken.resipe} />
-      )}
-      {loading ? (
-        <Text>Loding</Text>
-      ) : (
-        <MeatRecipe data={allData.meat.resipe} />
-      )}
+      {loading ? <Text>Loding</Text> : <ChickenRecipe data={allData.chicken} />}
+      {loading ? <Text>Loding</Text> : <MeatRecipe data={allData.meat} />}
     </Screen>
   );
 };
