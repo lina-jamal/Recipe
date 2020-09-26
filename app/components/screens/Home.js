@@ -5,6 +5,8 @@ import SearchBar from "../SearchBar";
 import FeaturedResipe from "../FeaturedResipe";
 import ChickenRecipe from "../ChickenRecipe";
 import MeatRecipe from "../meatRecipe";
+import DesertRecipe from "../DesertRecipe";
+import SaladRecipe from "../SaladRecipe";
 import useResipe from "../../hooks/useResipe";
 
 const Home = () => {
@@ -23,8 +25,16 @@ const Home = () => {
         }}
       />
       {/* <SmallCard /> */}
-      {loading ? <Text>Loding</Text> : <ChickenRecipe data={allData.chicken} />}
-      {loading ? <Text>Loding</Text> : <MeatRecipe data={allData.meat} />}
+      {loading ? (
+        <Text>Loding...</Text>
+      ) : (
+        <>
+          <ChickenRecipe data={allData.chicken} />
+          <MeatRecipe data={allData.meat} />
+          <DesertRecipe data={allData.desert} />
+          <SaladRecipe data={allData.salad} />
+        </>
+      )}
     </Screen>
   );
 };
