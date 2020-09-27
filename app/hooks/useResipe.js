@@ -37,10 +37,12 @@ const useResipe = () => {
             image: recipe.image,
             title: recipe.label,
             deitLabel: recipe.dietLabels,
-            mealType: recipe.mealType,
+            healthLabels: recipe.healthLabels,
             ingredientLines: recipe.ingredientLines,
-            digest: recipe.digest,
+            shareAs: recipe.shareAs,
             url: recipe.url,
+            nuOfServes: recipe.yield,
+            totalNutrients: recipe.totalNutrients,
             category: q,
           }));
         });
