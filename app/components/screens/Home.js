@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text } from "react-native";
 import Screen from "../common/Screen";
 import SearchBar from "../SearchBar";
-import FeaturedResipe from "../FeaturedResipe";
+import RandomResipe from "../RandomResipe";
 import ChickenRecipe from "../ChickenRecipe";
 import MeatRecipe from "../meatRecipe";
 import DesertRecipe from "../DesertRecipe";
@@ -10,20 +10,30 @@ import SaladRecipe from "../SaladRecipe";
 import useResipe from "../../hooks/useResipe";
 
 const Home = () => {
-  const { loading, allData } = useResipe();
+  const { loading, allData, data } = useResipe();
+  const [randomResipe, setRandomResipe] = useState();
+
+  const getRandomResipe = async () => {
+    await data;
+    if (data.length !== 0) {
+      const getRandom = Math.floor(Math.random() * data.length);
+      const randomResipe = data[getRandom];
+      setRandomResipe(randomResipe);
+      return randomResipe;
+    }
+  };
+  useEffect(() => {
+    getRandomResipe();
+  }, [data.length === 0]);
+
   return (
     <Screen>
       <SearchBar />
-      <FeaturedResipe
-        item={{
-          id: "hhhjkkll;;",
-          category: "chiken",
-          // title: "Creamy Lemon Parmesan Chicken",
-          // dietLabels: "low",
-          image:
-            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190313-creamy-lemon-parmesan-chicken-horizontal-1553026901.png?crop=0.668xw:1.00xh;0.184xw,0&resize=768:*",
-        }}
-      />
+      {randomResipe ? (
+        <RandomResipe item={randomResipe} />
+      ) : (
+        <Text>Loding...</Text>
+      )}
       {/* <SmallCard /> */}
       {loading ? (
         <Text>Loding...</Text>
