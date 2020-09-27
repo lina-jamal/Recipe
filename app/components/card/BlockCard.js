@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: "hidden",
     backgroundColor: "#fff",
-    // justifyContent: "center",
+    justifyContent: "center",
   },
   image: {
     width: "100%",

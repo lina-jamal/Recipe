@@ -12,6 +12,8 @@ import useResipe from "../../hooks/useResipe";
 import HorizotalList from "../list/HorizotalList";
 import Close from "../common/Close";
 import { useNavigation } from "@react-navigation/native";
+import { Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("window");
 
 const ResipeDetail = ({ route }) => {
@@ -59,13 +61,19 @@ const ResipeDetail = ({ route }) => {
             <View style={styles.contentContainer}>
               <Text style={styles.title}> {resipe[0].title} ..</Text>
               <View style={styles.ListContent}>
-                <Text style={styles.content}>ingredientLines...</Text>
+                <Text style={styles.content}>
+                  <MaterialCommunityIcons name="food" size={30} color="black" />{" "}
+                  ingredientLines...
+                </Text>
 
                 <FlatList
                   data={resipe[0].ingredientLines}
                   keyExtractor={(item, index) => item + index}
                   renderItem={({ item }) => (
-                    <Text style={styles.list}>_ {item}</Text>
+                    <Text style={styles.list}>
+                      <Entypo name="check" size={24} color="black" />
+                      {item}
+                    </Text>
                   )}
                 />
               </View>
@@ -109,7 +117,6 @@ const styles = StyleSheet.create({
   list: {
     padding: 10,
     fontSize: 18,
-    height: 44,
   },
   ListContent: {
     flex: 1,

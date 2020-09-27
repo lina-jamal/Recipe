@@ -1,10 +1,10 @@
 import React from "react";
 import { Text } from "react-native";
-const Title = ({ children, numberOfLines = 2, size = 18 }) => {
+const Title = ({ children, numberOfLines = 2, size = 20 }) => {
   return (
     <Text
       numberOfLines={numberOfLines}
-      style={{ fontWeight: "blod", fontSize: size }}
+      style={{ fontWeight: "bold", fontSize: size }}
     >
       {children}
     </Text>
