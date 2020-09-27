@@ -1,7 +1,7 @@
 import React from "react";
 import BlockCard from "./card/BlockCard";
 import { useNavigation } from "@react-navigation/native";
-const FeaturedResipe = ({ item }) => {
+const RandomResipe = ({ item }) => {
   const navigation = useNavigation();
   return (
     <BlockCard
@@ -12,4 +12,4 @@ const FeaturedResipe = ({ item }) => {
   );
 };
 
-export default FeaturedResipe;
+export default RandomResipe;
