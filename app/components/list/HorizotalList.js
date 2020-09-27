@@ -18,7 +18,7 @@ const HorizotalList = ({ title, data }) => {
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <SmallCard
-              onPress={() => navigation.navigate("ResipeDetail", { item })}
+              onPress={() => navigation.push("ResipeDetail", { item })}
               item={item}
             />
           )}

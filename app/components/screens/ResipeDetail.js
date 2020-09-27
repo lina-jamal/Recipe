@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import useResipe from "../../hooks/useResipe";
 import HorizotalList from "../list/HorizotalList";
+import Close from "../common/Close";
+import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 
 const ResipeDetail = ({ route }) => {
@@ -19,6 +21,7 @@ const ResipeDetail = ({ route }) => {
 
   const [loading, setLoading] = useState(true);
   const { id: resipeId, category: resipeCaegory } = route.params.item;
+  const navigation = useNavigation();
 
   const getSingle = async (id) => {
     await data;
@@ -45,38 +48,42 @@ const ResipeDetail = ({ route }) => {
   }, [data.length === 0]);
 
   return (
-    <ScrollView style={styles.container}>
-      {resipe ? (
-        <View>
-          {console.log(resipe)}
+    <>
+      <ScrollView style={styles.container}>
+        {resipe ? (
+          <View>
+            <Image
+              style={styles.image}
+              source={{ uri: resipe[0].image }}
+            ></Image>
+            <View style={styles.contentContainer}>
+              <Text style={styles.title}> {resipe[0].title} ..</Text>
+              <View style={styles.ListContent}>
+                <Text style={styles.content}>ingredientLines...</Text>
 
-          <Image style={styles.image} source={{ uri: resipe[0].image }}></Image>
-          <View style={styles.contentContainer}>
-            <Text style={styles.title}> {resipe[0].title} ..</Text>
-            <View style={styles.ListContent}>
-              <Text style={styles.content}>ingredientLines...</Text>
-
-              <FlatList
-                data={resipe[0].ingredientLines}
-                keyExtractor={(item, index) => item + index}
-                renderItem={({ item }) => (
-                  <Text style={styles.list}>_ {item}</Text>
-                )}
-              />
+                <FlatList
+                  data={resipe[0].ingredientLines}
+                  keyExtractor={(item, index) => item + index}
+                  renderItem={({ item }) => (
+                    <Text style={styles.list}>_ {item}</Text>
+                  )}
+                />
+              </View>
             </View>
+            {related ? (
+              <View style={styles.RelatedContaner}>
+                <HorizotalList title="Related Resepi.." data={related} />
+              </View>
+            ) : (
+              <Text>loading ...</Text>
+            )}
           </View>
-          {related ? (
-            <View style={styles.RelatedContaner}>
-              <HorizotalList title="Related Resepi.." data={related} />
-            </View>
-          ) : (
-            <Text>loading ...</Text>
-          )}
-        </View>
-      ) : (
-        <Text>loading ...</Text>
-      )}
-    </ScrollView>
+        ) : (
+          <Text>loading ...</Text>
+        )}
+      </ScrollView>
+      <Close onPress={() => navigation.popToTop()} />
+    </>
   );
 };
 const styles = StyleSheet.create({
