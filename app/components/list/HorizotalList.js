@@ -2,7 +2,9 @@ import React from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 import Title from "../common/Title";
 import SmallCard from "../card/smallCard";
+import { useNavigation } from "@react-navigation/native";
 const HorizotalList = ({ title, data }) => {
+  const navigation = useNavigation();
   return (
     <>
       <Title style={styles.tittle} size={20}>
@@ -14,7 +16,12 @@ const HorizotalList = ({ title, data }) => {
           keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <SmallCard item={item} />}
+          renderItem={({ item }) => (
+            <SmallCard
+              onPress={() => navigation.navigate("ResipeDetail", { item })}
+              item={item}
+            />
+          )}
         />
       </View>
     </>

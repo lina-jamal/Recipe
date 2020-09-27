@@ -2,9 +2,14 @@ import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
 const { width } = Dimensions.get("window");
 import BlockCard from "./BlockCard";
-const SmallCard = ({ item }) => {
+const SmallCard = ({ item, onPress }) => {
   return (
-    <BlockCard item={item} style={styles.container} imageStyle={styles.image} />
+    <BlockCard
+      onPress={onPress}
+      item={item}
+      style={styles.container}
+      imageStyle={styles.image}
+    />
   );
 };
 const styles = StyleSheet.create({
