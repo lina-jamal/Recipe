@@ -8,8 +8,27 @@ import ResipeList from "../list/ResipeList";
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator
+      screenOptions={{
+        headerTransparent: true,
+        headerBackTitle: "",
+        headerTintColor: "white",
+        headerLeftContainerStyle: {
+          width: 50,
+          height: 50,
+          borderRadius: 50,
+          backgroundColor: "rgba(92,90,91,0.7)",
+          alignItems: "center",
+          marginLeft: 20,
+          marginTop: 25,
+        },
+      }}
+    >
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Home"
+        component={Home}
+      />
       <Stack.Screen name="ResipeDetail" component={ResipeDetail} />
       <Stack.Screen name="ResipeList" component={ResipeList} />
     </Stack.Navigator>
